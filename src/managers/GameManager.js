@@ -2,7 +2,7 @@
 // Centralized game loop & orchestrator
 // Add inside GameManager.js constructor:
 import HUD from './HUD.js';
-import Player from '../entities/Player.js';
+import Player from 'src/entities/Player.js';
 import PowerUpManager from './PowerUpManager.js';
 import BulletManager from './BulletManager.js';
 import AsteroidManager from './AsteroidManager.js';
