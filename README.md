@@ -91,7 +91,7 @@ Feel free to fork this project and submit pull requests for:
 ---
 
 ## License
-MIT License  
+Creative Commons License  
 (c) 2025 CaliDef
 
 ---
