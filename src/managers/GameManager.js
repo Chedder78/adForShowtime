@@ -20,7 +20,7 @@ export default class GameManager {
         this.lastFrame = 0;
         this.registerInput();
     }
-
+}
     registerInput() {
         window.addEventListener('keydown', e => this.keys[e.code] = true);
         window.addEventListener('keyup', e => this.keys[e.code] = false);
@@ -48,11 +48,11 @@ export default class GameManager {
     }
 
     render() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.player.draw(this.ctx);
-        this.bulletManager.draw(this.ctx);
-        this.asteroidManager.draw(this.ctx);
-        this.powerUpManager.draw(this.ctx);
-    }
+    this.player.draw(this.ctx);
+    this.bulletManager.draw(this.ctx);
+    this.asteroidManager.draw(this.ctx);
+    this.powerUpManager.draw(this.ctx);
+    this.hud.draw(this.ctx); // <-- add here
 }
