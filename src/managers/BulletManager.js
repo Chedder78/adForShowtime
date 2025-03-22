@@ -1,7 +1,7 @@
 // /src/managers/BulletManager.js
 // Handles all bullets (creation + update + cleanup)
 
-import Bullet from '../entities/Bullet.js';
+import Bullet from 'src/entities/Bullet.js';
 
 export default class BulletManager {
     constructor() {
