@@ -9,17 +9,19 @@ export default class BulletManager {
         this.cooldown = 0;
     }
 
-    fire(player) {
-        if (this.cooldown <= 0) {
-            const x = player.x + Math.sin(player.angle) * 20;
-            const y = player.y - Math.cos(player.angle) * 20;
-            this.bullets.push(new Bullet(x, y, player.angle));
-
-            // Example: emit 'shotFired' event if needed later
-            player.emit('shotFired');
-            this.cooldown = 300; // ms cooldown
+    // inside BulletManager.js fire()
+fire(player) {
+    if (this.cooldown <= 0) {
+        if (player.doubleShotMode) {
+            this.bullets.push(new Bullet(player.x - 5, player.y, player.angle));
+            this.bullets.push(new Bullet(player.x + 5, player.y, player.angle));
+        } else {
+            this.bullets.push(new Bullet(player.x, player.y, player.angle));
         }
+        this.cooldown = 300;
     }
+}
+
 
     update() {
         this.cooldown -= 16; // Approx 60fps delta compensation
