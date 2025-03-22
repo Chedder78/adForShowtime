@@ -1,7 +1,7 @@
 // /src/main.js
 // Entry point: Initializes and starts the game
 
-import GameManager from './managers/GameManager.js';
+import GameManager from 'js/managers/GameManager.js';
 
 window.onload = () => {
     const canvas = document.getElementById('gameCanvas');
