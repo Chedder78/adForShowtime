@@ -1,7 +1,7 @@
 // /src/managers/PowerUpManager.js
 // Handles power-up lifecycle: spawn, update, collision
 
-import PowerUpFactory from '../factories/PowerUpFactory.js';
+import PowerUpFactory from 'src/factories/PowerUpFactory.js';
 
 export default class PowerUpManager {
     constructor() {
