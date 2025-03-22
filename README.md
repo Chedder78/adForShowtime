@@ -1,6 +1,6 @@
-# Asteroids 2 - Modular HTML5 Canvas Game
+# Asteroids Again! - Modular HTML5 Canvas Game
 
-Welcome to **Asteroids 2**, a fully modular and extensible reimagining of the classic Asteroids game using modern **HTML5 Canvas** and **Vanilla JavaScript**.
+Welcome to **Asteroids Again!**, a fully modular and extensible reimagining of the classic Asteroids game using modern **HTML5 Canvas** and **Vanilla JavaScript**.
 
 This project focuses on clean architecture, scalability, and game feature extensibility, including a component-driven power-up system, modular managers, and an easy-to-extend codebase.
 
