@@ -2,17 +2,25 @@
 // Base class for power-up items on the field
 
 export default class PowerUp {
-    constructor(x, y, type) {
+    constructor(x, y, type, canvas) {
         this.x = x;
         this.y = y;
-        this.radius = 12;
         this.type = type;
+        this.radius = 12;
         this.active = true;
         this.rotation = 0;
+        this.canvas = canvas;
     }
 
     update() {
-        this.rotation += 0.05; // Optional: spinning animation
+        this.rotation += 0.05;
+
+        // Optional: screen wrap for power-ups
+        const width = this.canvas.width / (window.devicePixelRatio || 1);
+        const height = this.canvas.height / (window.devicePixelRatio || 1);
+
+        this.x = (this.x + width) % width;
+        this.y = (this.y + height) % height;
     }
 
     draw(ctx) {
