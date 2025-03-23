@@ -9,7 +9,9 @@ import AsteroidManager from './src/managers/AsteroidManager.js';
 import HUD from './src/managers/HUD.js';
 
 export default class GameManager {
-    constructor(canvas, ctx) {
+    constructor(canvas, ctx, keys, joystickvector) {
+        this.keys = keys;
+        this.joystickVector = joystickVector;
         this.canvas = canvas;
         this.ctx = ctx;
         this.player = new Player(canvas.width / 2, canvas.height / 2);
