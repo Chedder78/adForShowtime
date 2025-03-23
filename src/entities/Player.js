@@ -1,7 +1,7 @@
 // /src/entities/Player.js
 // Handles player ship logic and power-up components
 
-import EventEmitter from 'src/utils/EventEmitter.js';
+import EventEmitter from './src/utils/EventEmitter.js';
 
 export default class Player extends EventEmitter {
     constructor(x, y) {
