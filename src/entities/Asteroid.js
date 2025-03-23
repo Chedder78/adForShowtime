@@ -1,10 +1,9 @@
 // /src/entities/Asteroid.js
-// Basic asteroid entity with simple drift
-
 export default class Asteroid {
-    constructor(x, y, size = 3) {
+    constructor(x, y, canvas, size = 3) {
         this.x = x;
         this.y = y;
+        this.canvas = canvas;
         this.size = size;
         this.radius = size * 15;
         this.angle = Math.random() * Math.PI * 2;
@@ -16,8 +15,12 @@ export default class Asteroid {
         this.x += Math.sin(this.angle) * this.speed;
         this.y -= Math.cos(this.angle) * this.speed;
 
-        this.x = (this.x + 800) % 800;
-        this.y = (this.y + 600) % 600;
+        const width = this.canvas.width / (window.devicePixelRatio || 1);
+        const height = this.canvas.height / (window.devicePixelRatio || 1);
+
+        // Screen wrap
+        this.x = (this.x + width) % width;
+        this.y = (this.y + height) % height;
     }
 
     draw(ctx) {
