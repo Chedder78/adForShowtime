@@ -1,7 +1,7 @@
 // /src/entities/Player.js
-// Handles player ship logic and power-up components
+// Handles player ship logic with touch joystick + power-up components
 
-import EventEmitter from './src/utils/EventEmitter.js';
+import EventEmitter from '../utils/EventEmitter.js';
 
 export default class Player extends EventEmitter {
     constructor(x, y) {
@@ -15,40 +15,59 @@ export default class Player extends EventEmitter {
         this.components = []; // Array of active power-up components
     }
 
-    update(keys, bulletManager) {
-        // Rotate
-        if (keys['ArrowLeft']) this.angle -= 0.05;
-        if (keys['ArrowRight']) this.angle += 0.05;
+    /**
+     * Hybrid input handler: joystick + keyboard
+     * @param {Object} keys - keyboard input (e.g., ArrowLeft, Space)
+     * @param {BulletManager} bulletManager - ref to bullet manager
+     * @param {Object} joystickVector - { x: -1 to 1, y: -1 to 1 } from virtual joystick
+     */
+    update(keys, bulletManager, joystickVector = { x: 0, y: 0 }) {
+        const joyX = joystickVector.x;
+        const joyY = joystickVector.y;
 
-        // Thrust
-        if (keys['ArrowUp']) this.speed = Math.min(this.speed + 0.1, this.maxSpeed);
-        else this.speed *= 0.98; // friction
+        // Handle joystick input (touch drag)
+        if (joyX !== 0 || joyY !== 0) {
+            const angle = Math.atan2(joyY, joyX);
+            this.angle = angle;
+            this.speed = Math.min(this.speed + 0.15, this.maxSpeed);
+        } 
+        // Keyboard fallback
+        else {
+            if (keys['ArrowLeft']) this.angle -= 0.05;
+            if (keys['ArrowRight']) this.angle += 0.05;
+            if (keys['ArrowUp']) this.speed = Math.min(this.speed + 0.1, this.maxSpeed);
+            else this.speed *= 0.98; // slow down naturally
+        }
 
-        // Move
+        // Movement
         this.x += Math.sin(this.angle) * this.speed;
         this.y -= Math.cos(this.angle) * this.speed;
 
-        // Screen wrap
+        // Screen wrap (replace with canvas.width / canvas.height later)
         this.x = (this.x + 800) % 800;
         this.y = (this.y + 600) % 600;
 
-        // Fire
+        // Fire (works with touch fire button or spacebar)
         if (keys['Space']) bulletManager.fire(this);
 
-        // Update active components
+        // Power-up components (e.g., Shield, DoubleShot)
         this.components.forEach(c => c.update());
-
-        // Cleanup expired components
         this.components = this.components.filter(c => !c.expired);
     }
 
+    /**
+     * Attach a power-up component (shield, double-shot, etc.)
+     */
     addComponent(component) {
         this.components.push(component);
         component.activate();
     }
 
+    /**
+     * Draw ship and power-up indicators (e.g., shield aura)
+     */
     draw(ctx) {
-        // Ship
+        // Ship body
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate(this.angle);
@@ -63,7 +82,7 @@ export default class Player extends EventEmitter {
 
         ctx.restore();
 
-        // Draw power-up indicators (e.g., shield)
+        // Active component visuals (shield ring, etc.)
         this.components.forEach(c => c.draw(ctx));
     }
 }
