@@ -1,23 +1,27 @@
 // /src/managers/PowerUpManager.js
 // Handles power-up lifecycle: spawn, update, collision
 
-import PowerUpFactory from './src/factories/PowerUpFactory.js';
+import PowerUpFactory from '../factories/PowerUpFactory.js';
 
 export default class PowerUpManager {
-    constructor() {
+    constructor(canvas) {
+        this.canvas = canvas;
         this.powerUps = [];
         this.spawnTimer = 0;
     }
 
     update(player) {
+        const width = this.canvas.width / (window.devicePixelRatio || 1);
+        const height = this.canvas.height / (window.devicePixelRatio || 1);
+
         // Spawning logic
         this.spawnTimer--;
         if (this.spawnTimer <= 0) {
             const types = ['shield', 'double-shot'];
             const type = types[Math.floor(Math.random() * types.length)];
-            const x = Math.random() * 800;
-            const y = Math.random() * 600;
-            this.powerUps.push(PowerUpFactory.create(type, x, y));
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            this.powerUps.push(PowerUpFactory.create(type, x, y, this.canvas));
             this.spawnTimer = 600; // ~10s respawn
         }
 
@@ -25,11 +29,12 @@ export default class PowerUpManager {
         this.powerUps.forEach(p => p.update());
 
         // Collision detection
-        this.powerUps.forEach((p, i) => {
+        this.powerUps = this.powerUps.filter(p => {
             if (p.checkCollision(player)) {
-                player.addComponent(PowerUpFactory.createComponent(type = p.type, player));
-                this.powerUps.splice(i, 1); // Remove on pickup
+                player.addComponent(PowerUpFactory.createComponent(p.type, player));
+                return false; // Remove on pickup
             }
+            return true;
         });
     }
 
