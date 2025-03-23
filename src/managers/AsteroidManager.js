@@ -1,10 +1,11 @@
 // /src/managers/AsteroidManager.js
-// Spawns and manages asteroids
+// Spawns and manages asteroids dynamically based on canvas size
 
-import Asteroid from './src/entities/Asteroid.js';
+import Asteroid from '../entities/Asteroid.js';
 
 export default class AsteroidManager {
-    constructor() {
+    constructor(canvas) {
+        this.canvas = canvas;
         this.asteroids = [];
         this.spawnInterval = 0;
     }
@@ -12,7 +13,17 @@ export default class AsteroidManager {
     update() {
         this.spawnInterval--;
         if (this.spawnInterval <= 0) {
-            this.asteroids.push(new Asteroid(Math.random() * 800, Math.random() * 600));
+            const width = this.canvas.width / (window.devicePixelRatio || 1);
+            const height = this.canvas.height / (window.devicePixelRatio || 1);
+
+            this.asteroids.push(
+                new Asteroid(
+                    Math.random() * width,
+                    Math.random() * height,
+                    this.canvas
+                )
+            );
+
             this.spawnInterval = 120; // spawn every ~2s
         }
 
