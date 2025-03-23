@@ -2,11 +2,11 @@
 // Centralized game loop & orchestrator
 // Add inside GameManager.js constructor:
 
-import Player from 'src/entities/Player.js';
-import PowerUpManager from 'src/managers/PowerUpManager.js';
-import BulletManager from 'src/managers/BulletManager.js';
-import AsteroidManager from 'src/managers/AsteroidManager.js';
-import HUD from 'src/managers/HUD.js';
+import Player from './src/entities/Player.js';
+import PowerUpManager from './src/managers/PowerUpManager.js';
+import BulletManager from './src/managers/BulletManager.js';
+import AsteroidManager from './src/managers/AsteroidManager.js';
+import HUD from './src/managers/HUD.js';
 
 export default class GameManager {
     constructor(canvas, ctx) {
