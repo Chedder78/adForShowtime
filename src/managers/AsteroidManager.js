@@ -1,7 +1,7 @@
 // /src/managers/AsteroidManager.js
 // Spawns and manages asteroids
 
-import Asteroid from 'src/entities/Asteroid.js';
+import Asteroid from './src/entities/Asteroid.js';
 
 export default class AsteroidManager {
     constructor() {
