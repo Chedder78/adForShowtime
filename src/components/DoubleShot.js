@@ -4,7 +4,7 @@
 export default class DoubleShot {
     constructor(player) {
         this.player = player;
-        this.duration = 5000;
+        this.duration = 5000; // ms
         this.expired = false;
     }
 
@@ -21,6 +21,6 @@ export default class DoubleShot {
     }
 
     draw(ctx) {
-        // Optional: you can add a HUD indicator later if you like
+        // Optional: add a small icon near player or on HUD if desired
     }
 }
