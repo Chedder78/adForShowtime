@@ -1,22 +1,24 @@
 // /src/entities/Bullet.js
-// Handles player bullet logic
-
 export default class Bullet {
-    constructor(x, y, angle) {
+    constructor(x, y, angle, canvas) {
         this.x = x;
         this.y = y;
         this.angle = angle;
         this.speed = 8;
         this.radius = 2;
         this.active = true;
+        this.canvas = canvas;
     }
 
     update() {
         this.x += Math.sin(this.angle) * this.speed;
         this.y -= Math.cos(this.angle) * this.speed;
 
-        // Out of bounds
-        if (this.x < 0 || this.x > 800 || this.y < 0 || this.y > 600) {
+        const width = this.canvas.width / (window.devicePixelRatio || 1);
+        const height = this.canvas.height / (window.devicePixelRatio || 1);
+
+        // Out of bounds logic
+        if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
             this.active = false;
         }
     }
