@@ -2,7 +2,8 @@
 import Bullet from '../entities/Bullet.js';
 
 export default class BulletManager {
-    constructor() {
+    constructor(canvas) {
+        this.canvas = canvas;
         this.bullets = [];
         this.cooldown = 0;
     }
@@ -10,10 +11,10 @@ export default class BulletManager {
     fire(player) {
         if (this.cooldown <= 0) {
             if (player.doubleShotMode) {
-                this.bullets.push(new Bullet(player.x - 5, player.y, player.angle));
-                this.bullets.push(new Bullet(player.x + 5, player.y, player.angle));
+                this.bullets.push(new Bullet(player.x - 5, player.y, player.angle, this.canvas));
+                this.bullets.push(new Bullet(player.x + 5, player.y, player.angle, this.canvas));
             } else {
-                this.bullets.push(new Bullet(player.x, player.y, player.angle));
+                this.bullets.push(new Bullet(player.x, player.y, player.angle, this.canvas));
             }
             this.cooldown = 300;
         }
