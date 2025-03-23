@@ -1,13 +1,13 @@
 // /src/factories/PowerUpFactory.js
 // Factory pattern to generate PowerUp and Components
 
-import PowerUp from './src/entities/PowerUp.js';
-import Shield from './src/components/Shield.js';
-import DoubleShot from './src/components/DoubleShot.js';
+import PowerUp from '../entities/PowerUp.js';
+import Shield from '../components/Shield.js';
+import DoubleShot from '../components/DoubleShot.js';
 
 export default class PowerUpFactory {
-    static create(type, x, y) {
-        return new PowerUp(x, y, type);
+    static create(type, x, y, canvas) {
+        return new PowerUp(x, y, type, canvas);
     }
 
     static createComponent(type, player) {
