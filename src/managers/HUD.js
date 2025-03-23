@@ -1,18 +1,22 @@
 // /src/managers/HUD.js
-// Modular HUD for showing player status & active power-ups
+// Modular HUD for showing player status & active power-ups (responsive-ready)
 
 export default class HUD {
-    constructor(player) {
+    constructor(player, canvas) {
         this.player = player;
+        this.canvas = canvas;
     }
 
     draw(ctx) {
+        const width = this.canvas.width / (window.devicePixelRatio || 1);
+        const isMobile = width < 500;
+
         ctx.save();
-        ctx.font = '14px Arial';
+        ctx.font = isMobile ? '12px Arial' : '14px Arial';
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'top';
 
-        // Display "Active Power-ups"
+        // Display HUD in top-left (scales on smaller screens)
         ctx.fillText('Power-ups:', 20, 20);
 
         let yOffset = 40;
