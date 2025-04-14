@@ -1049,127 +1049,119 @@
   <div class="floating-cta" onclick="scrollToForm()">
     <i class="fas fa-headphones"></i>
     <span>Start My Consultation</span>
-</div>
+  </div>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  // Initialize animations
-  document.addEventListener('DOMContentLoaded', function() {
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize animations
     AOS.init({
       duration: 800,
       easing: 'ease-in-out',
       once: true
     });
-    
-    // Handle video play/pause
-    const video = document.querySelector('.hero-video video');
-    if(video) {
-      video.addEventListener('play', function() {
-        document.querySelector('.play-button').style.display = 'none';
+
+    // Project type selection
+    function setProject(projectType) {
+      const headlines = {
+        new_construction: {
+          title: "Perfect Smart Home Integration For Your New Construction",
+          subtext: "Let's design your technology infrastructure from the ground up for seamless integration."
+        },
+        remodeling: {
+          title: "Transform Your Home With Smart Technology",
+          subtext: "We'll help you modernize your space with minimal disruption during your remodel."
+        },
+        retrofit: {
+          title: "Upgrade Your Existing Home With Premium Automation",
+          subtext: "Discover how we can enhance your current home with invisible technology solutions."
+        }
+      };
+
+      document.getElementById('project_type_input').value = projectType;
+      document.getElementById('dynamicHeadline').textContent = headlines[projectType].title;
+      document.getElementById('dynamicSubtext').textContent = headlines[projectType].subtext;
+
+      // Show the form and dynamic header
+      document.querySelectorAll('.form-container').forEach(el => {
+        el.style.display = 'block';
       });
-      video.addEventListener('pause', function() {
-        document.querySelector('.play-button').style.display = 'flex';
-      });
+
+      // Scroll to form
+      setTimeout(() => {
+        document.getElementById('consultationForm').scrollIntoView({ behavior: 'smooth' });
+      }, 300);
     }
-  });
 
-  // Project selection handler
-  function setProject(type) {
-    const headlines = {
-      new_construction: {
-        title: "Perfect Smart Home Integration For New Construction",
-        subtext: "Let's design your technology infrastructure from the ground up for seamless integration."
-      },
-      remodeling: {
-        title: "Seamless Technology Integration For Your Remodel",
-        subtext: "We'll help you incorporate smart technology into your existing spaces beautifully."
-      },
-      retrofit: {
-        title: "Premium Smart Home Upgrades For Your Existing Home",
-        subtext: "Modernize your home with minimal disruption using our retrofit solutions."
-      }
-    };
-    
-    document.getElementById('dynamicHeadline').textContent = headlines[type].title;
-    document.getElementById('dynamicSubtext').textContent = headlines[type].subtext;
-    document.getElementById('project_type_input').value = type;
-    
-    // Show the form and dynamic header
-    document.querySelectorAll('.form-container').forEach(el => {
-      el.style.display = 'block';
-    });
-    
-    // Scroll to form
-    setTimeout(() => {
-      document.getElementById('consultationForm').scrollIntoView({ behavior: 'smooth' });
-    }, 300);
-  }
-
-  // Form submission handler
-  document.getElementById('consultationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Check qualification criteria
-    const projectType = document.getElementById('project_type').value;
-    const budget = document.getElementById('budget').value;
-    const squareFootage = document.getElementById('square_footage').value;
-    const ownsHome = document.getElementById('own_home').value === 'yes';
-    
-    // Qualification logic
-    const qualifies = (
-      ownsHome && 
-      (projectType !== '' && projectType !== 'other') && 
-      (budget === '25k-50k' || budget === 'over50k' || 
-       (squareFootage && parseInt(squareFootage.replace(/\D/g,'')) > 2000)
-    );
-    
-    // Show appropriate thank you message
-    if(qualifies) {
-      document.getElementById('thankYouQualified').style.display = 'block';
-      document.getElementById('consultationForm').style.display = 'none';
-      document.getElementById('thankYouQualified').scrollIntoView({ behavior: 'smooth' });
+    // Form submission
+    document.getElementById('consultationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
       
-      // Here you would typically submit the form data to your backend
-      // For demo purposes, we're just showing the thank you message
-    } else {
-      document.getElementById('thankYouRejected').style.display = 'block';
-      document.getElementById('consultationForm').style.display = 'none';
-      document.getElementById('thankYouRejected').scrollIntoView({ behavior: 'smooth' });
+      // Get form values
+      const projectType = document.getElementById('project_type').value;
+      const budget = document.getElementById('budget').value;
+      
+      // Simple qualification logic
+      const isQualified = (budget === '25k-50k' || budget === 'over50k') && 
+                         (projectType !== 'other');
+      
+      // Show appropriate thank you message
+      if (isQualified) {
+        document.getElementById('thankYouQualified').style.display = 'block';
+        document.getElementById('consultationForm').style.display = 'none';
+      } else {
+        document.getElementById('thankYouRejected').style.display = 'block';
+        document.getElementById('consultationForm').style.display = 'none';
+      }
+      
+      // Scroll to thank you message
+      setTimeout(() => {
+        (isQualified ? document.getElementById('thankYouQualified') : 
+                      document.getElementById('thankYouRejected'))
+          .scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+      
+      // Here you would normally send the form data to your server
+      // For this demo, we're just showing the thank you message
+    });
+
+    // Fallback form submission
+    function submitFallback() {
+      const email = document.getElementById('fallback-email').value;
+      if (email && email.includes('@')) {
+        alert('Thank you! Your smart home guide will be emailed to you shortly.');
+        document.getElementById('fallback-email').value = '';
+      } else {
+        alert('Please enter a valid email address.');
+      }
     }
-  });
 
-  // Fallback form submission
-  function submitFallback() {
-    const email = document.getElementById('fallback-email').value;
-    if(email && email.includes('@')) {
-      alert('Thank you! Your guide will be emailed to you shortly.');
-      document.getElementById('fallback-email').value = '';
-    } else {
-      alert('Please enter a valid email address.');
+    // Scroll to form function
+    function scrollToForm() {
+      const form = document.getElementById('consultationForm');
+      const projectSelector = document.querySelector('.project-selector');
+      
+      if (form.style.display === 'block') {
+        form.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        projectSelector.scrollIntoView({ behavior: 'smooth' });
+      }
     }
-  }
 
-  // Scroll to form function
-  function scrollToForm() {
-    const form = document.getElementById('consultationForm');
-    if(form.style.display === 'none') {
-      // If form isn't visible yet, show project selector first
-      document.querySelector('.project-selector').scrollIntoView({ behavior: 'smooth' });
-    } else {
-      form.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
+    // Video play/pause on scroll
+    const video = document.querySelector('.hero-video video');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.5 });
 
-  // Dynamic location header (example: could use IP lookup in real implementation)
-  const cities = ['Beverly Hills', 'Malibu', 'Santa Monica', 'Hollywood Hills', 'Bel Air'];
-  document.getElementById('dynamicLocationHeader').textContent += 
-    ' in ' + cities[Math.floor(Math.random() * cities.length)];
-</script>
-
-<!-- Floating CTA -->
-<div class="floating-cta" onclick="scrollToForm()">
-  <i class="fas fa-headphones"></i>
-  <span>Start My Consultation</span>
-</div>
+    observer.observe(video);
+  </script>
 </body>
 </html>
+
+    
