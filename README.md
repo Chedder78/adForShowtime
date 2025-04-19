@@ -65,4 +65,4 @@ This website is part of the **It's Showtime** brand. If you're interested in a s
 
 ## 📄 License
 
-This project is under the [MIT License](LICENSE).
+This project is under the [Creative Commons Zero v1.0 Universal]
