@@ -66,8 +66,3 @@ This website is part of the **Sonovision Elite** brand. If you're interested in 
 ## 📄 License
 
 This project is under the [MIT License](LICENSE).
-```
-
----
-
-Let me know if you want a custom logo badge, GitHub Pages link, or integration instructions for something like Formspree or Google Sheets.
