@@ -59,7 +59,7 @@ To change animations or effects:
 
 ## 📬 Contact
 
-This website is part of the **Sonovision Elite** brand. If you're interested in a similar lead-generation funnel for your business, feel free to reach out or fork this repo.
+This website is part of the **It's Showtime** brand. If you're interested in a similar lead-generation funnel for your business, feel free to reach out or fork this repo.
 
 ---
 
