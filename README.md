@@ -1,8 +1,3 @@
-Here’s a polished `README.md` for your GitHub project. It explains what the site does, highlights the key tech features, and guides others on how to deploy or contribute if needed.
-
----
-
-```markdown
 # 🏡 Smart Home Consultation Form – High-End AV & Automation
 
 Welcome to the official repository for our **Smart Home Consultation Website**, designed to attract high-budget clients looking for premium home technology installations — including **custom theaters, home automation, whole-house audio, and integrated lighting/security**.
