@@ -1,268 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>It's Showtime | We Make Complicated Things Easy To Use</title>
-  <meta name="description" content="Experience the future of luxury living with our AI-powered home automation systems. Transform your space with cutting-edge technology.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Home Technology Consultation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
-      --primary: #2E86AB;
-      --primary-dark: #1B6B8F;
-      --secondary: #333F47;
-      --accent: #F18F01;
-      --light: #F7F7F7;
-      --dark: #1A1E24;
-      --gray: #4A525A;
-      --light-gray: #D3D3D3;
-      --neon-glow: 0 0 10px rgba(46, 134, 171, 0.3);
+      --glossy-black: #0a0a0a;
+      --deep-black: #121212;
+      --scarlet: #d10000;
+      --brushed-nickel: #e0e0e0;
+      --gold-accent: #d4af37;
+      --carbon-fiber: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      --glass-panel: rgba(20, 20, 20, 0.7);
+      --neon-glow: 0 0 15px rgba(209, 0, 0, 0.5);
     }
-    
-    /* Professional Base Styles */
+
+    /* Inspired by Bowers & Wilkins & Bang & Olufsen aesthetics */
     body {
-      font-family: 'Montserrat', sans-serif;
       margin: 0;
-      padding: 0;
-      background: var(--dark);
-      color: var(--light);
-      line-height: 1.6;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--carbon-fiber);
+      color: var(--brushed-nickel);
       overflow-x: hidden;
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%232E86AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>'), auto;
+      line-height: 1.6;
     }
 
-    /* Subtle Background Effect */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(46, 134, 171, 0.05) 0%, transparent 30%),
-        radial-gradient(circle at 80% 70%, rgba(241, 143, 1, 0.05) 0%, transparent 30%),
-        linear-gradient(to bottom, rgba(26, 30, 36, 0.95), rgba(26, 30, 36, 0.98));
-      z-index: -2;
-      animation: hologramPulse 15s infinite alternate;
-    }
-
-    @keyframes hologramPulse {
-      0% { opacity: 0.95; }
-      100% { opacity: 1; }
-    }
-
-    /* Subtle Grid Overlay */
-    body::after {
-      content: '';
+    /* Speaker Grill Background Effect */
+    .grill-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background-image: 
-        linear-gradient(rgba(46, 134, 171, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(46, 134, 171, 0.02) 1px, transparent 1px);
-      background-size: 40px 40px;
+        radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.9) 100%),
+        repeating-linear-gradient(0deg, rgba(10,10,10,0.3) 0px, rgba(10,10,10,0.3) 1px, transparent 1px, transparent 5px),
+        repeating-linear-gradient(90deg, rgba(10,10,10,0.3) 0px, rgba(10,10,10,0.3) 1px, transparent 1px, transparent 5px);
       z-index: -1;
       pointer-events: none;
     }
 
-    /* Main Container with Glass Morphism */
+    /* Inspired by McIntosh Amplifier Glass Panel */
     .container {
       max-width: 1200px;
-      margin: 40px auto;
-      padding: 40px;
-      background: rgba(30, 35, 42, 0.7);
+      margin: 2rem auto;
+      padding: 3rem;
+      background: var(--glass-panel);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(46, 134, 171, 0.2);
-      border-radius: 24px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), var(--neon-glow);
+      border-radius: 16px;
+      border: 1px solid rgba(224, 224, 224, 0.1);
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 30px rgba(0, 0, 0, 0.3);
       position: relative;
       overflow: hidden;
-      z-index: 1;
-      transition: all 0.5s ease;
     }
 
-    .container:hover {
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(46, 134, 171, 0.3);
-    }
-
-    /* Border Animation */
     .container::before {
       content: '';
       position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, 
-        transparent, 
-        transparent, 
-        var(--primary), 
-        transparent, 
-        transparent);
-      background-size: 400% 400%;
-      z-index: -1;
-      border-radius: 25px;
-      animation: borderFlow 8s linear infinite;
-      opacity: 0.5;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 1px solid var(--brushed-nickel);
+      border-radius: 20px;
+      opacity: 0.1;
+      pointer-events: none;
     }
 
-    @keyframes borderFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Professional Header Styles */
-    header {
+    /* Company Header */
+    .company-header {
       text-align: center;
-      margin-bottom: 60px;
-      position: relative;
+      margin-bottom: 3rem;
     }
-
-    h1, h2, h3, h4 {
+    
+    .company-name {
       font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    header h1 {
-      color: var(--primary);
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px rgba(46, 134, 171, 0.2);
-      position: relative;
-      display: inline-block;
-      background: linear-gradient(to right, var(--primary), #A5D8FF);
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, var(--brushed-nickel), #ffffff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      letter-spacing: 1px;
+    }
+    
+    .company-slogan {
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      color: var(--scarlet);
+      text-transform: uppercase;
     }
 
-    header h1::after {
+    /* Inspired by KEF Speaker Design */
+    .hero {
+      text-align: center;
+      padding: 2rem 0;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--brushed-nickel);
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      opacity: 0.8;
+    }
+
+    /* Inspired by Devialet Phantom Speaker UI */
+    .qualification-card {
+      background: 
+        linear-gradient(145deg, rgba(10,10,10,0.9), rgba(30,30,30,0.9)),
+        url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+      border-radius: 16px;
+      padding: 3rem;
+      margin: 3rem auto;
+      max-width: 800px;
+      box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.6),
+        inset 0 0 20px rgba(0,0,0,0.5);
+      border: 1px solid rgba(224, 224, 224, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .qualification-card::after {
       content: '';
       position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 150px;
-      height: 3px;
-      background: linear-gradient(to right, transparent, var(--primary), transparent);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--scarlet);
       box-shadow: var(--neon-glow);
     }
 
-    header p {
-      color: var(--light-gray);
-      font-size: 1.3rem;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.8;
-    }
-
-    /* Interactive Hero Video with Parallax */
-    .hero-video {
-      width: 100%;
-      height: 500px;
-      background: #000;
-      margin: 60px 0;
-      border-radius: 16px;
-      overflow: hidden;
-      position: relative;
-      transform-style: preserve-3d;
-      perspective: 1000px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    }
-
-    .hero-video video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: translateZ(0);
-      transition: transform 0.5s ease;
-    }
-
-    .hero-video:hover video {
-      transform: translateZ(20px);
-    }
-
-    /* Professional Play Button */
-    .play-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100px;
-      height: 100px;
-      background: rgba(46, 134, 171, 0.2);
-      backdrop-filter: blur(5px);
-      border: 2px solid var(--primary);
-      border-radius: 50%;
+    .qualification-card h2 {
+      color: var(--brushed-nickel);
+      font-size: 2rem;
+      margin-bottom: 2rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 0 30px rgba(46, 134, 171, 0.2), inset 0 0 20px rgba(46, 134, 171, 0.1);
-      z-index: 10;
+      gap: 1rem;
+      font-weight: 400;
     }
 
-    .play-button::before {
+    .qualification-card h2 i {
+      color: var(--scarlet);
+    }
+
+    /* Inspired by Sonos Control Knobs */
+    .form-group {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+      color: var(--brushed-nickel);
+      letter-spacing: 0.5px;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 1.2rem;
+      background: rgba(20, 20, 20, 0.7);
+      border: 1px solid rgba(224, 224, 224, 0.1);
+      border-radius: 8px;
+      color: var(--brushed-nickel);
+      font-size: 1rem;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      appearance: none;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23e0e0e0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 12px;
+    }
+
+    select:focus, input:focus {
+      outline: none;
+      border-color: var(--scarlet);
+      box-shadow: 0 0 0 2px rgba(209, 0, 0, 0.3);
+    }
+
+    /* Inspired by CodePen Challenge Winner "Neon Checkboxes" */
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .checkbox-item {
+      position: relative;
+    }
+
+    .checkbox-item input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .checkbox-item label {
+      display: flex;
+      align-items: center;
+      padding: 1.5rem;
+      background: rgba(30, 30, 30, 0.7);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(224, 224, 224, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .checkbox-item label::before {
       content: '';
       position: absolute;
-      width: 120%;
-      height: 120%;
-      border: 2px dashed var(--primary);
-      border-radius: 50%;
-      animation: rotate 20s linear infinite;
-      opacity: 0.3;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(209,0,0,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .checkbox-item label:hover {
+      background: rgba(40, 40, 40, 0.7);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
-    .play-button:hover {
-      transform: translate(-50%, -50%) scale(1.1);
-      background: rgba(46, 134, 171, 0.3);
-      box-shadow: 0 0 40px rgba(46, 134, 171, 0.3), inset 0 0 30px rgba(46, 134, 171, 0.2);
+    .checkbox-item label:hover::before {
+      opacity: 1;
     }
 
-    .play-button i {
-      color: var(--primary);
-      font-size: 40px;
-      margin-left: 5px;
-      text-shadow: 0 0 10px rgba(46, 134, 171, 0.3);
+    .checkbox-item input:checked + label {
+      background: rgba(209, 0, 0, 0.1);
+      border-color: var(--scarlet);
+      box-shadow: 0 0 15px rgba(209, 0, 0, 0.2);
     }
 
-    /* 3D Benefit Cards */
+    .checkbox-item input:checked + label::after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      border: 1px solid var(--scarlet);
+      border-radius: 8px;
+      animation: neon-pulse 2s infinite;
+    }
+
+    .checkbox-item i {
+      margin-right: 1rem;
+      font-size: 1.5rem;
+      color: var(--brushed-nickel);
+      transition: all 0.3s ease;
+    }
+
+    .checkbox-item input:checked + label i {
+      color: var(--scarlet);
+      text-shadow: 0 0 10px rgba(209, 0, 0, 0.5);
+    }
+
+    /* Inspired by CodePen's "Liquid Metal Button" */
+    .cta-button {
+      display: inline-block;
+      width: 100%;
+      padding: 1.5rem;
+      background: linear-gradient(145deg, rgba(209,0,0,0.9), rgba(160,0,0,0.9));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+      overflow: hidden;
+      margin-top: 2rem;
+      box-shadow: 
+        0 5px 15px rgba(209, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255,255,255,0.2);
+      text-transform: uppercase;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 8px 25px rgba(209, 0, 0, 0.4),
+        inset 0 1px 1px rgba(255,255,255,0.2);
+    }
+
+    .cta-button:hover::before {
+      left: 100%;
+    }
+
+    .cta-button i {
+      margin-right: 1rem;
+    }
+
+    /* Inspired by MartinLogan Electrostatic Speaker Design */
     .benefits-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin: 60px 0;
-      perspective: 1000px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
     }
 
     .benefit-card {
-      background: rgba(40, 47, 56, 0.5);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(46, 134, 171, 0.2);
-      border-radius: 16px;
-      padding: 30px;
-      text-align: center;
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transform-style: preserve-3d;
+      background: linear-gradient(145deg, rgba(20,20,20,0.8), rgba(30,30,30,0.8));
+      border-radius: 12px;
+      padding: 2.5rem;
+      transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      border: 1px solid rgba(224, 224, 224, 0.05);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .benefit-card::before {
@@ -272,1561 +358,378 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(46, 134, 171, 0.1), transparent);
-      z-index: -1;
+      background: linear-gradient(135deg, transparent, rgba(209,0,0,0.03), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
 
     .benefit-card:hover {
-      transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(46, 134, 171, 0.2);
-      border-color: var(--primary);
+      transform: translateY(-10px);
+      box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(209, 0, 0, 0.1);
+      border-color: rgba(224, 224, 224, 0.1);
+    }
+
+    .benefit-card:hover::before {
+      opacity: 1;
     }
 
     .benefit-card i {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 20px;
-      text-shadow: 0 0 15px rgba(46, 134, 171, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .benefit-card:hover i {
-      transform: scale(1.2);
-      text-shadow: 0 0 20px rgba(46, 134, 171, 0.3);
+      font-size: 2.5rem;
+      color: var(--scarlet);
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 15px rgba(209, 0, 0, 0.3);
     }
 
     .benefit-card h3 {
-      color: var(--primary);
-      margin-bottom: 15px;
       font-size: 1.5rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    .benefit-card h3::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 2px;
-      background: var(--primary);
-      box-shadow: var(--neon-glow);
+      margin-bottom: 1rem;
+      color: var(--brushed-nickel);
+      font-weight: 500;
+      letter-spacing: 0.5px;
     }
 
     .benefit-card p {
-      color: var(--light-gray);
-      font-size: 1.1rem;
-      line-height: 1.7;
+      opacity: 0.8;
+      line-height: 1.8;
     }
 
-    /* Interactive Qualification Message */
-    .qualify-message {
-      background: rgba(40, 47, 56, 0.6);
-      backdrop-filter: blur(8px);
-      padding: 30px;
+    /* Inspired by CodePen's "Parallax Testimonial" */
+    .testimonial {
+      background: 
+        linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.85)),
+        url('https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      padding: 5rem 3rem;
       border-radius: 16px;
-      margin-bottom: 50px;
-      border-left: 5px solid var(--primary);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      margin: 4rem 0;
       position: relative;
       overflow: hidden;
-      transition: all 0.4s ease;
     }
 
-    .qualify-message:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(46, 134, 171, 0.1);
-    }
-
-    .qualify-message::before {
+    .testimonial::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 5px;
+      width: 4px;
       height: 100%;
-      background: var(--primary);
+      background: var(--scarlet);
       box-shadow: var(--neon-glow);
     }
 
-    .qualify-message h2 {
-      color: var(--primary);
+    .testimonial-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .testimonial blockquote {
+      font-size: 1.5rem;
+      font-style: italic;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      position: relative;
+      color: var(--brushed-nickel);
+    }
+
+    .testimonial blockquote::before,
+    .testimonial blockquote::after {
+      content: '"';
+      font-size: 4rem;
+      color: rgba(209, 0, 0, 0.2);
+      position: absolute;
+      line-height: 1;
+    }
+
+    .testimonial blockquote::before {
+      top: -1.5rem;
+      left: -2rem;
+    }
+
+    .testimonial blockquote::after {
+      bottom: -3rem;
+      right: -1rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+
+    .testimonial-author img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1.5rem;
+      border: 2px solid var(--scarlet);
+      box-shadow: 0 0 15px rgba(209, 0, 0, 0.3);
+    }
+
+    /* Brands Section */
+    .brands-section {
+      text-align: center;
+      margin: 4rem 0;
+      padding: 3rem 0;
+      border-top: 1px solid rgba(224, 224, 224, 0.1);
+      border-bottom: 1px solid rgba(224, 224, 224, 0.1);
+    }
+    
+    .brands-title {
+      font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      text-shadow: 0 0 10px rgba(46, 134, 171, 0.1);
+      margin-bottom: 2rem;
+      color: var(--brushed-nickel);
     }
-
-    .qualify-message h2 i {
-      margin-right: 15px;
-      font-size: 1.5rem;
-      animation: pulse 2s infinite;
-    }
-
-    .qualify-message ul {
-      list-style: none;
-      padding: 0;
-      margin: 25px 0;
-    }
-
-    .qualify-message ul li {
-      padding: 12px 0;
-      color: var(--light-gray);
-      position: relative;
-      padding-left: 40px;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      transition: all 0.3s ease;
-    }
-
-    .qualify-message ul li:hover {
-      color: var(--light);
-      transform: translateX(5px);
-    }
-
-    .qualify-message ul li::before {
-      content: '\f00c';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      color: var(--primary);
-      position: absolute;
-      left: 0;
-      font-size: 1.2rem;
-      text-shadow: 0 0 10px rgba(46, 134, 171, 0.2);
-    }
-
-    .qualify-message p.warning {
-      color: #FF6B6B;
-      font-weight: 600;
-      margin-top: 20px;
-      font-style: italic;
-      font-size: 1.1rem;
-      text-shadow: 0 0 10px rgba(255, 107, 107, 0.2);
-    }
-
-    /* Project Selector with Interactive Buttons */
-    .project-selector {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .project-selector h2 {
-      color: var(--light);
-      margin-bottom: 30px;
-      font-size: 2.2rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    .project-selector h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 3px;
-      background: var(--primary);
-      box-shadow: var(--neon-glow);
-    }
-
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 30px;
-    }
-
-    .btn-group button {
-      flex: 1;
-      min-width: 220px;
-      padding: 18px 30px;
-      font-size: 1.1rem;
-      background: transparent;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-      border-radius: 12px;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      box-shadow: 0 5px 15px rgba(46, 134, 171, 0.1);
-    }
-
-    .btn-group button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(46, 134, 171, 0.1), transparent);
-      transition: all 0.6s ease;
-      z-index: -1;
-    }
-
-    .btn-group button:hover {
-      background: rgba(46, 134, 171, 0.1);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(46, 134, 171, 0.2);
-    }
-
-    .btn-group button:hover::before {
-      left: 100%;
-    }
-
-    .btn-group button i {
-      margin-right: 10px;
-      font-size: 1.2rem;
-    }
-
-    /* Dynamic Header Animation */
-    .form-container {
-      display: none;
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Trust Badges with Hover Effects */
-    .trust-badges {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin: 60px 0;
-      padding: 30px;
-      background: rgba(46, 134, 171, 0.05);
-      backdrop-filter: blur(8px);
-      border-radius: 16px;
-      border: 1px solid rgba(46, 134, 171, 0.1);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .trust-badges div {
-      text-align: center;
-      font-size: 1.1rem;
-      min-width: 180px;
-      margin: 15px;
-      transition: all 0.4s ease;
-    }
-
-    .trust-badges div:hover {
-      transform: translateY(-10px);
-    }
-
-    .trust-badges i {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 15px;
-      text-shadow: 0 0 15px rgba(46, 134, 171, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    .trust-badges div:hover i {
-      transform: scale(1.2);
-      text-shadow: 0 0 20px rgba(46, 134, 171, 0.2);
-    }
-
-    .trust-badges p {
-      color: var(--light-gray);
-      margin: 0;
-      font-size: 1.1rem;
-    }
-
-    /* Testimonials with 3D Flip Effect */
-    .testimonials {
-      margin: 60px 0;
-    }
-
-    .testimonials h2 {
-      text-align: center;
-      color: var(--primary);
-      margin-bottom: 40px;
-      font-size: 2.2rem;
-      text-shadow: 0 0 10px rgba(46, 134, 171, 0.1);
-    }
-
-    .testimonial-grid {
+    
+    .brands-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      perspective: 1000px;
-    }
-
-    .testimonial-card {
-      background: rgba(40, 47, 56, 0.6);
-      backdrop-filter: blur(8px);
-      padding: 30px;
-      border-radius: 16px;
-      border-left: 4px solid var(--primary);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      transition: all 0.5s ease;
-      transform-style: preserve-3d;
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-10px) rotateY(5deg);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(46, 134, 171, 0.1);
-    }
-
-    .testimonial-card .stars {
-      color: var(--primary);
-      margin-bottom: 20px;
-      font-size: 1.2rem;
-      text-shadow: 0 0 10px rgba(46, 134, 171, 0.1);
-    }
-
-    .testimonial-card .content {
-      font-style: italic;
-      color: var(--light-gray);
-      margin-bottom: 20px;
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .testimonial-card .author {
-      display: flex;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
       align-items: center;
+      justify-items: center;
     }
-
-    .testimonial-card .author img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-right: 20px;
-      border: 2px solid var(--primary);
-      box-shadow: 0 0 15px rgba(46, 134, 171, 0.2);
+    
+    .brand-logo {
+      max-width: 120px;
+      height: auto;
+      filter: grayscale(30%) brightness(0.8);
       transition: all 0.3s ease;
     }
-
-    .testimonial-card:hover .author img {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(46, 134, 171, 0.3);
-    }
-
-    .testimonial-card .author-info p {
-      margin: 0;
-      font-size: 1rem;
-    }
-
-    .testimonial-card .author-info p.name {
-      color: var(--light);
-      font-weight: 600;
-      font-size: 1.2rem;
-    }
-
-    .testimonial-card .author-info p.title {
-      color: var(--light-gray);
-      font-size: 0.95rem;
-    }
-
-    /* Portfolio Highlights with Parallax */
-    .portfolio-highlights {
-      margin: 60px 0;
-    }
-
-    .portfolio-highlights h2 {
-      text-align: center;
-      color: var(--primary);
-      margin-bottom: 40px;
-      font-size: 2.2rem;
-      text-shadow: 0 0 10px rgba(46, 134, 171, 0.1);
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .portfolio-item {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      height: 250px;
-      cursor: pointer;
-      transition: all 0.5s ease;
-      transform-style: preserve-3d;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .portfolio-item:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(46, 134, 171, 0.1);
-    }
-
-    .portfolio-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s ease;
-    }
-
-    .portfolio-item:hover img {
+    
+    .brand-logo:hover {
+      filter: grayscale(0%) brightness(1);
       transform: scale(1.1);
     }
 
-    .portfolio-item .overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.9));
-      padding: 20px;
-      transform: translateY(100%);
-      transition: all 0.5s ease;
-    }
-
-    .portfolio-item:hover .overlay {
-      transform: translateY(0);
-    }
-
-    .portfolio-item h3 {
-      color: var(--light);
-      margin: 0;
-      font-size: 1.3rem;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-
-    .portfolio-item p {
-      color: var(--light-gray);
-      margin: 10px 0 0;
-      font-size: 1rem;
-    }
-
-    /* Availability with Animated Pulse */
-    .availability {
-      background: rgba(46, 134, 171, 0.05);
-      backdrop-filter: blur(8px);
-      padding: 30px;
-      border-radius: 16px;
-      margin: 50px 0;
-      text-align: center;
-      border: 1px dashed var(--primary);
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      animation: pulseBorder 3s infinite;
-    }
-
-    @keyframes pulseBorder {
-      0% { box-shadow: 0 0 0 0 rgba(46, 134, 171, 0.1); }
-      70% { box-shadow: 0 0 0 15px rgba(46, 134, 171, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(46, 134, 171, 0); }
-    }
-
-    .availability::before {
-      content: '\f017';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--dark);
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-size: 1.5rem;
-      border-radius: 50%;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-
-    .availability p {
-      margin: 0;
-      font-size: 1.3rem;
-    }
-
-    .availability p strong {
-      color: var(--primary);
-      text-shadow: 0 0 10px rgba(46, 134, 171, 0.1);
-    }
-
-    .consultant-profiles {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 30px;
-    }
-
-    .consultant-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: all 0.4s ease;
-    }
-
-    .consultant-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .consultant-profiles img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--primary);
-      margin-bottom: 15px;
-      box-shadow: 0 0 20px rgba(46, 134, 171, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .consultant-card:hover img {
-      transform: scale(1.1);
-      box-shadow: 0 0 30px rgba(46, 134, 171, 0.3);
-    }
-
-    .consultant-card p {
-      margin: 0;
-      font-size: 1.1rem;
-      color: var(--light-gray);
-    }
-
-    .consultant-card p.name {
-      font-weight: 600;
-      color: var(--light);
-      font-size: 1.2rem;
-    }
-
-    /* Professional Form Styles */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-
-    label {
-      display: flex;
-      flex-direction: column;
-      font-weight: 600;
-      color: var(--light);
-      position: relative;
-    }
-
-    input, select, textarea {
-      margin-top: 10px;
-      padding: 15px;
-      border: none;
-      border-radius: 12px;
-      background: rgba(50, 58, 68, 0.5);
-      backdrop-filter: blur(5px);
-      color: var(--light);
-      font-size: 1.1rem;
-      transition: all 0.4s ease;
-      border: 1px solid rgba(46, 134, 171, 0.2);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px var(--primary), 0 0 20px rgba(46, 134, 171, 0.1);
-      background: rgba(60, 70, 80, 0.7);
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    /* Professional Submit Button */
-    button[type="submit"] {
-      padding: 18px;
-      font-size: 1.2rem;
-      background: var(--primary);
-      color: var(--light);
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 20px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(46, 134, 171, 0.2);
-      z-index: 1;
-    }
-
-    button[type="submit"]::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: all 0.6s ease;
-      z-index: -1;
-    }
-
-    button[type="submit"]:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(46, 134, 171, 0.3);
-      background: var(--primary-dark);
-    }
-
-    button[type="submit"]:hover::before {
-      left: 100%;
-    }
-
-    button[type="submit"] i {
-      margin-right: 10px;
-    }
-
-    /* Thank You Messages with Particle Effects */
-    .thank-you {
-      background: rgba(40, 47, 56, 0.8);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--primary);
-      padding: 50px;
-      border-radius: 16px;
-      text-align: center;
-      margin: 50px 0;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(46, 134, 171, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .thank-you::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(46, 134, 171, 0.05) 0%, transparent 70%);
-      animation: rotate 20s linear infinite;
-      z-index: -1;
-    }
-
-    .thank-you h2 {
-      color: var(--primary);
-      font-size: 2.5rem;
-      margin-bottom: 25px;
-      text-shadow: 0 0 15px rgba(46, 134, 171, 0.1);
-    }
-
-    .thank-you p, .thank-you ul {
-      color: var(--light-gray);
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      line-height: 1.8;
-    }
-
-    .thank-you ul {
-      list-style: none;
-      padding: 0;
-      margin: 30px 0;
-    }
-
-    .thank-you ul li {
-      padding: 12px 0;
-      position: relative;
-      padding-left: 40px;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-    }
-
-    .thank-you ul li:hover {
-      transform: translateX(10px);
-    }
-
-    .thank-you ul li::before {
-      content: '\f054';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      color: var(--primary);
-      position: absolute;
-      left: 10px;
-      font-size: 1.2rem;
-      text-shadow: 0 0 10px rgba(46, 134, 171, 0.1);
-    }
-
-    /* Newsletter Fallback with Glow Effect */
-    .newsletter-fallback {
-      margin-top: 40px;
-      padding-top: 40px;
-      border-top: 1px solid rgba(46, 134, 171, 0.1);
-    }
-
-    .newsletter-fallback h3 {
-      color: var(--light);
-      margin-bottom: 20px;
-      text-align: center;
-      font-size: 1.5rem;
-    }
-
-    .newsletter-fallback p {
-      color: var(--light-gray);
-      text-align: center;
-      margin-bottom: 25px;
-      font-size: 1.1rem;
-    }
-
-    .newsletter-fallback input {
-      width: 100%;
-      margin: 15px 0;
-      padding: 15px;
-      background: rgba(50, 58, 68, 0.5);
-      border: 1px solid rgba(46, 134, 171, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .newsletter-fallback input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 15px rgba(46, 134, 171, 0.1);
-    }
-
-    .newsletter-fallback button {
-      width: 100%;
-      padding: 15px;
-      background: var(--primary);
-      color: var(--light);
-      border: none;
-      border-radius: 12px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .newsletter-fallback button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(46, 134, 171, 0.3);
-      background: var(--primary-dark);
-    }
-
-    /* CTA Banner with Particle Background */
-    .cta-banner {
-      background: linear-gradient(135deg, rgba(40, 47, 56, 0.7), rgba(50, 58, 68, 0.7));
-      backdrop-filter: blur(10px);
-      border: 2px solid var(--primary);
-      padding: 40px;
-      text-align: center;
-      margin: 60px 0;
-      border-radius: 16px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(46, 134, 171, 0.1);
-    }
-
-    .cta-banner::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-      opacity: 0.1;
-      z-index: -1;
-    }
-
-    .cta-banner::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(46, 134, 171, 0.05) 0%, transparent 70%);
-      animation: rotate 30s linear infinite;
-      z-index: -1;
-    }
-
-    .cta-banner h3 {
-      color: var(--primary);
-      font-size: 2rem;
-      margin-bottom: 15px;
-      text-shadow: 0 0 15px rgba(46, 134, 171, 0.1);
-    }
-
-    .cta-banner p {
-      color: var(--light-gray);
-      font-size: 1.3rem;
-      margin-bottom: 25px;
-      line-height: 1.7;
-    }
-
-    .cta-banner button {
-      padding: 18px 35px;
-      font-size: 1.2rem;
-      background: var(--primary);
-      color: var(--light);
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(46, 134, 171, 0.2);
-      z-index: 1;
-    }
-
-    .cta-banner button:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 35px rgba(46, 134, 171, 0.3);
-      background: var(--primary-dark);
-    }
-
-    .cta-banner button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: all 0.6s ease;
-      z-index: -1;
-    }
-
-    .cta-banner button:hover::before {
-      left: 100%;
-    }
-
-    .cta-banner button i {
-      margin-right: 10px;
-      font-size: 1.3rem;
-    }
-
-    /* Floating CTA with Micro-Interaction */
-    .floating-cta {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: var(--primary);
-      color: var(--light);
-      padding: 18px 30px;
-      border-radius: 50px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(46, 134, 171, 0.2);
-      cursor: pointer;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transform: translateY(0);
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .floating-cta:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(46, 134, 171, 0.3);
-      background: var(--primary-dark);
-    }
-
-    .floating-cta i {
-      font-size: 1.5rem;
-      transition: all 0.3s ease;
-    }
-
-    .floating-cta:hover i {
-      transform: rotate(15deg);
+    /* Animations */
+    @keyframes neon-pulse {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
     }
 
     /* Responsive Design */
-    @media (max-width: 1024px) {
-      .container {
-        max-width: 90%;
-        padding: 30px;
-      }
-      
-      header h1 {
-        font-size: 2.8rem;
-      }
-      
-      .hero-video {
-        height: 400px;
-      }
-    }
-
     @media (max-width: 768px) {
       .container {
-        margin: 20px auto;
-        padding: 25px;
-        border-radius: 0;
+        padding: 2rem;
+        margin: 1rem;
       }
       
-      header h1 {
+      .company-name {
         font-size: 2.2rem;
       }
       
-      header p {
-        font-size: 1.1rem;
+      .hero h1 {
+        font-size: 2rem;
       }
       
-      .hero-video {
-        height: 300px;
-        margin: 40px 0;
+      .qualification-card {
+        padding: 2rem;
       }
       
-      .play-button {
-        width: 80px;
-        height: 80px;
+      .checkbox-group {
+        grid-template-columns: 1fr;
       }
       
-      .play-button i {
-        font-size: 30px;
-      }
-      
-      .btn-group {
-        flex-direction: column;
-      }
-      
-      .btn-group button {
-        width: 100%;
-      }
-      
-      .trust-badges {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .floating-cta {
-        bottom: 20px;
-        right: 20px;
-        padding: 15px 25px;
-        font-size: 1rem;
+      .brands-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (max-width: 480px) {
-      header h1 {
+      .company-name {
         font-size: 1.8rem;
       }
       
-      .hero-video {
-        height: 250px;
+      .hero h1 {
+        font-size: 1.8rem;
       }
       
-      .benefit-card {
-        padding: 20px;
+      .testimonial {
+        padding: 3rem 1.5rem;
       }
       
-      .testimonial-card {
-        padding: 20px;
+      .testimonial blockquote {
+        font-size: 1.2rem;
       }
-      
-      .portfolio-item {
-        height: 200px;
-      }
-    }
-
-    /* Animation Classes */
-    .fade-in {
-      animation: fadeIn 1s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .pulse {
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 134, 171, 0.2); }
-      70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(46, 134, 171, 0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 134, 171, 0); }
-    }
-
-    .float {
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--dark);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary-dark);
     }
   </style>
 </head>
 <body>
-  <div class="container fade-in">
-    <!-- Initial Header with Dynamic Typing Effect -->
-    <header data-aos="fade-down">
-      <h1 id="dynamicLocationHeader"></h1>
-      <p>Experience seamless control of your home's entertainment, lighting, climate and security with our bespoke automation solutions designed for luxury living.</p>
-    </header>
-
-    <!-- Hero Video Section with Parallax -->
-    <div class="hero-video" data-aos="fade-up">
-      <video poster="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" loop muted>
-        <source src="https://example.com/your-video.mp4" type="video/mp4">
-      </video>
-      <div class="play-button" onclick="this.parentElement.querySelector('video').play(); this.style.display='none'">
-        <i class="fas fa-play"></i>
-      </div>
+  <!-- Speaker Grill Background -->
+  <div class="grill-overlay"></div>
+  
+  <div class="container">
+    <div class="company-header">
+      <div class="company-name">Your Company Name</div>
+      <div class="company-slogan">We make complicated things easy to use</div>
     </div>
-
-    <!-- Benefits Grid with 3D Hover Effects -->
-    <div class="benefits-grid" data-aos="fade-up">
-      <div class="benefit-card">
-        <i class="fas fa-theater-masks"></i>
-        <h3>Cinema-Quality Theaters</h3>
-        <p>Professional-grade home theaters with perfect acoustics and immersive visuals.</p>
-      </div>
-      <div class="benefit-card">
-        <i class="fas fa-music"></i>
-        <h3>Whole-Home Audio</h3>
-        <p>Flawless sound distribution to every room with invisible speakers.</p>
-      </div>
-      <div class="benefit-card">
-        <i class="fas fa-lightbulb"></i>
-        <h3>Smart Lighting</h3>
-        <p>Automated lighting scenes that adapt to your lifestyle and mood.</p>
-      </div>
-      <div class="benefit-card">
-        <i class="fas fa-lock"></i>
-        <h3>Integrated Security</h3>
-        <p>Seamless security systems that work with your automation.</p>
-      </div>
-    </div>
-
-    <!-- Interactive Qualification Message -->
-    <section class="qualify-message" data-aos="fade-up">
-      <h2><i class="fas fa-star"></i> Is This Consultation Right For You?</h2>
-      <p>Our premium consultation service is designed for homeowners who value exceptional quality and are planning:</p>
-      <ul>
-        <li>New construction or major renovations</li>
-        <li>Whole-home automation systems</li>
-        <li>Custom home theaters or media rooms</li>
-        <li>High-end distributed audio solutions</li>
-        <li>Integrated smart home technology</li>
-      </ul>
-      <p class="warning">Note: Basic TV mounting or single-room sound systems don't qualify for this complimentary consultation.</p>
+    
+    <section class="hero">
+      <h1>Premium Home Technology Consultation</h1>
+      <p>Experience expertly designed home automation that's both powerful and easy to use</p>
     </section>
-
-    <!-- Project Type Selector with Animated Buttons -->
-    <div class="project-selector" data-aos="fade-up">
-      <h2>What Type of Project Are You Planning?</h2>
-      <div class="btn-group">
-        <button type="button" onclick="setProject('new_construction')">
-          <i class="fas fa-home"></i> New Construction
-        </button>
-        <button type="button" onclick="setProject('remodeling')">
-          <i class="fas fa-hammer"></i> Remodeling
-        </button>
-        <button type="button" onclick="setProject('retrofit')">
-          <i class="fas fa-sync-alt"></i> Retrofit
-        </button>
-      </div>
-    </div>
-
-    <!-- Dynamic Header (shown after project selection) -->
-    <header data-aos="fade-down" class="form-container" style="display:none;">
-      <h1 id="dynamicHeadline"></h1>
-      <p id="dynamicSubtext"></p>
-    </header>
-
-    <!-- Trust Badges with Hover Effects -->
-    <div class="trust-badges" data-aos="fade-up">
-      <div>
-        <i class="fas fa-award"></i>
-        <p>Certified Home Technology Experts</p>
-      </div>
-      <div>
-        <i class="fas fa-star"></i>
-        <p>Licensed Contractor With 25+ Years Expierience </p>
-      </div>
-      <div>
-        <i class="fas fa-shield-alt"></i>
-        <p>Lifetime Support Guarantee</p>
-      </div>
-    </div>
-
-    <!-- Testimonials with 3D Flip Effect -->
-    <div class="testimonials" data-aos="fade-up">
-      <h2>What Our Clients Say</h2>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="content">
-            "The home theater It's Showtime created is better than most commercial cinemas. Every detail was perfect - from the acoustics to the seating layout."
-          </div>
-          <div class="author">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James R.">
-            <div class="author-info">
-              <p class="name">James R.</p>
-              <p class="title">Beverly Hills, CA</p>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="content">
-            "Peter and Chad created a whole-home audio system that's incredible. You can't see any speakers but the sound is perfectly balanced in every room."
-          </div>
-          <div class="author">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah L.">
-            <div class="author-info">
-              <p class="name">Sarah L.</p>
-              <p class="title">Malibu, CA</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Portfolio Highlights with Parallax Hover -->
-    <div class="portfolio-highlights" data-aos="fade-up">
-      <h2>Our Recent Projects</h2>
-      <div class="portfolio-grid">
-        <div class="portfolio-item">
-          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Home Theater">
-          <div class="overlay">
-            <h3>Luxury Home Theater</h3>
-            <p>Dolby Atmos 9.2.4 System</p>
-          </div>
-        </div>
-        <div class="portfolio-item">
-          <img src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Smart Home">
-          <div class="overlay">
-            <h3>Whole-Home Automation</h3>
-            <p>Savant Pro -- URC Elite -- and Lutron Homeworks Smart Systems</p>
-          </div>
-        </div>
-        <div class="portfolio-item">
-          <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Outdoor Audio">
-          <div class="overlay">
-            <h3>Outdoor Entertainment</h3>
-            <p>Weatherproof Audio/Video</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Availability with Animated Pulse -->
-    <div class="availability" data-aos="zoom-in">
-      <p><strong>Only 2 premium installation slots remaining</strong> for next month.</p>
-      <div class="consultant-profiles">
-        <div class="consultant-card">
-          <img src="place card" alt="Lead Installer">
-          <p class="name">Chad M.</p>
-          <p>Pro AV Installer</p>
-        </div>
-        <div class="consultant-card">
-          <img src="place card" alt="AV Designer">
-          <p class="name">Peter S.</p>
-          <p>Owner, AV Designer, and Lead Installer</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Form with Professional Design -->
-    <form id="consultationForm" class="form form-container" style="display:none;" data-aos="fade-up">
-      <input type="hidden" name="project_type" id="project_type_input" />
-      <input type="hidden" name="source" value="premium_consultation_page">
-
-      <label>Do you own the home where installation will occur?
-        <select name="own_home" id="own_home" required>
-          <option value="">Select one</option>
-          <option value="yes">Yes, I own the home</option>
-          <option value="no">No, I'm renting or don't own yet</option>
-        </select       
-      </label>
-
-      <label>What type of system are you interested in?
-        <select name="project_type" id="project_type" required>
-          <option value="">Select your priority</option>
-          <option value="home_theater">Custom Home Theater</option>
-          <option value="whole_house_audio">Whole-House Audio</option>
-          <option value="home_automation">Complete Home Automation</option>
-          <option value="lighting_control">Smart Lighting Control</option>
-          <option value="security">Integrated Security</option>
-          <option value="other">Other Premium System</option>
-        </select>
-      </label>
-
-      <label>Home square footage?
-        <input type="text" name="square_footage" id="square_footage" placeholder="e.g. 3,500 sq ft" />
-      </label>
-
-      <label>When would you like to begin your project?
-        <select name="timeline" id="timeline">
-          <option value="">Select timeline</option>
-          <option value="asap">Immediately (within 2 weeks)</option>
-          <option value="1_month">Within 1 Month</option>
-          <option value="3_months">1–3 Months</option>
-          <option value="6_months">3–6 Months</option>
-          <option value="planning">Still in Planning Phase</option>
-        </select>
-      </label>
-
-      <label>Estimated budget for this project?
-        <select name="budget" id="budget">
-          <option value="">Select range</option>
-          <option value="under10k">Under $10,000</option>
-          <option value="10k-25k">$10,000 – $25,000</option>
-          <option value="25k-50k">$25,000 – $50,000</option>
-          <option value="over50k">Over $50,000</option>
-          <option value="unsure">Not sure yet</option>
-        </select>
-      </label>
-
-      <label>Your Name:
-        <input type="text" name="name" id="name" required placeholder="First and Last Name" />
-      </label>
-
-      <label>Email Address:
-        <input type="email" name="email" id="email" required placeholder="Your best email" />
-      </label>
-
-      <label>Phone Number:
-        <input type="tel" name="phone" id="phone" placeholder="(xxx) xxx-xxxx" />
-      </label>
-
-      <label>Tell us about your vision (optional):
-        <textarea name="message" id="message" rows="4" placeholder="What would your perfect smart home include?"></textarea>
-      </label>
-
-      <button type="submit">
-        <i class="fas fa-calendar-check"></i> Schedule My Free Consultation
-      </button>
-    </form>
-
-    <!-- QUALIFIED THANK YOU with Particle Background -->
-    <div id="thankYouQualified" class="thank-you" style="display:none;" data-aos="fade-up">
-      <h2>Thank You for Your Request!</h2>
-      <p>We've received your information and will contact you within 24 hours to schedule your complimentary consultation.</p>
-      <p>Here's what to expect next:</p>
-      <ul>
-        <li>Personal call from our design specialist</li>
-        <li>In-depth discussion of your needs and vision</li>
-        <li>Preliminary recommendations tailored to your home</li>
-        <li>No-pressure quote with various options</li>
-      </ul>
-      <p>We look forward to helping you create the ultimate smart home experience!</p>
-    </div>
-
-    <!-- NOT QUALIFIED MESSAGE with Alternative Offer -->
-    <div id="thankYouRejected" class="thank-you" style="display:none;" data-aos="fade-up">
-      <h2>Thank You for Your Interest</h2>
-      <p>Our complimentary consultation service is specifically designed for homeowners planning premium home technology installations including:</p>
-      <ul>
-        <li>Custom home theaters and media rooms</li>
-        <li>Whole-home audio and video distribution</li>
-        <li>Integrated smart home automation systems</li>
-        <li>High-end lighting control solutions</li>
-      </ul>
-      <p>For smaller projects, we recommend our standard service packages.</p>
+    
+    <div class="qualification-card">
+      <h2><i class="fas fa-medal"></i> Consultation Request</h2>
+      <p>Tell us about your project and we'll help design the perfect solution.</p>
       
-      <div class="newsletter-fallback">
-        <h3>Get Our Free Smart Home Planning Guide</h3>
-        <p>Learn how to prepare your home for future technology upgrades.</p>
-        <input type="email" id="fallback-email" placeholder="Your email address" />
-        <button onclick="submitFallback()">
-          <i class="fas fa-download"></i> Download Now
+      <form id="consultationForm">
+        <div class="form-group">
+          <label>Which systems interest you? (Select all applicable)</label>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="project-theater" name="project" value="home_theater">
+              <label for="project-theater">
+                <i class="fas fa-film"></i> Home Theater
+              </label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="project-audio" name="project" value="whole_house_audio">
+              <label for="project-audio">
+                <i class="fas fa-volume-up"></i> Whole-House Audio
+              </label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="project-automation" name="project" value="home_automation">
+              <label for="project-automation">
+                <i class="fas fa-robot"></i> Home Automation
+              </label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="project-lighting" name="project" value="lighting_control">
+              <label for="project-lighting">
+                <i class="fas fa-lightbulb"></i> Lighting Control
+              </label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="project-cameras" name="project" value="ip_cameras">
+              <label for="project-cameras">
+                <i class="fas fa-video"></i> IP Cameras (Axis)
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="timeline">Your project timeline</label>
+          <select id="timeline" required>
+            <option value="">Select implementation phase</option>
+            <option value="immediately">Immediate (0-2 weeks)</option>
+            <option value="1_month">Near-Term (1 month)</option>
+            <option value="3_months">Planning Phase (1-3 months)</option>
+            <option value="6_months">Future Consideration (3-6 months)</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required placeholder="Your name">
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required placeholder="Your primary email">
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Direct Contact Number</label>
+          <input type="tel" id="phone" placeholder="For consultation scheduling">
+        </div>
+        
+        <button type="submit" class="cta-button">
+          <i class="fas fa-headset"></i> Request Consultation
         </button>
+      </form>
+    </div>
+    
+    <!-- Brands Section -->
+    <section class="brands-section">
+      <h2 class="brands-title">Premium Brands We Work With</h2>
+      <div class="brands-grid">
+        <img src="https://via.placeholder.com/120x60?text=Savant+Pro" alt="Savant Pro" class="brand-logo">
+        <img src="https://via.placeholder.com/120x60?text=URC" alt="URC" class="brand-logo">
+        <img src="https://via.placeholder.com/120x60?text=Sonos" alt="Sonos" class="brand-logo">
+        <img src="https://via.placeholder.com/120x60?text=Episode" alt="Episode" class="brand-logo">
+        <img src="https://via.placeholder.com/120x60?text=Sonance" alt="Sonance" class="brand-logo">
+        <img src="https://via.placeholder.com/120x60?text=Yamaha" alt="Yamaha" class="brand-logo">
+        <img src="https://via.placeholder.com/120x60?text=Sony" alt="Sony" class="brand-logo">
+        <img src="https://via.placeholder.com/120x60?text=Lutron" alt="Lutron" class="brand-logo">
       </div>
-    </div>
-
-    <!-- CTA Banner with Particle Background -->
-    <div class="cta-banner" data-aos="zoom-in">
-      <h3>Exclusive Offer for Early Reservations</h3>
-      <p>Schedule your consultation this week and receive a complimentary design render of your project.</p>
-      <button onclick="scrollToForm()" class="pulse">
-        <i class="fas fa-gift"></i> Claim My Free Design Render
-      </button>
-    </div>
+    </section>
+    
+    <section class="benefits-grid">
+      <div class="benefit-card">
+        <i class="fas fa-microchip"></i>
+        <h3>Expert Engineering</h3>
+        <p>Components selected for both performance and ease of use</p>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-wave-square"></i>
+        <h3>Quality Sound</h3>
+        <p>Audio systems designed for your space and listening preferences</p>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-infinity"></i>
+        <h3>Future-Ready</h3>
+        <p>Solutions that remain useful and upgradable for years</p>
+      </div>
+    </section>
+    
+    <section class="testimonial">
+      <div class="testimonial-content">
+        <blockquote>
+          "They made the whole process simple from start to finish. The system works perfectly and was much easier to use than I expected from such advanced technology."
+        </blockquote>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Jonathan K.">
+          <div>
+            <h4>Jonathan K.</h4>
+            <p>Homeowner, Malibu</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <!-- Floating CTA with Micro-Interaction -->
-  <div class="floating-cta" onclick="scrollToForm()">
-    <i class="fas fa-headphones"></i>
-    <span>Start My Consultation</span>
-  </div>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
   <script>
-    // Initialize animations
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true
-    });
-
-    // Typing animation for header
-    const headerText = "It's Showtime -- We Make Complicated Things Easy To Use";
-    let i = 0;
-    const typingEffect = setInterval(() => {
-      document.getElementById('dynamicLocationHeader').textContent += headerText[i];
-      i++;
-      if (i >= headerText.length) clearInterval(typingEffect);
-    }, 100);
-
-    // GSAP Scroll Animations
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animate elements on scroll
-    gsap.utils.toArray(".benefit-card").forEach((card, i) => {
-      gsap.from(card, {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        delay: i * 0.1,
-        scrollTrigger: {
-          trigger: card,
-          start: "top 80%",
-          toggleActions: "play none none none"
-        }
-      });
-    });
-
-    // Parallax effect for hero video
-    gsap.to(".hero-video video", {
-      y: 50,
-      scrollTrigger: {
-        trigger: ".hero-video",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true
-      }
-    });
-
-    // Project selection handler
-    function setProject(type) {
-      const headlines = {
-        new_construction: {
-          title: "Perfect Smart Home Integration For New Construction",
-          subtext: "Let's design your technology infrastructure from the ground up for seamless integration."
-        },
-        remodeling: {
-          title: "Transform Your Home With Smart Technology",
-          subtext: "We'll help you modernize your space with minimal disruption during your remodel."
-        },
-        retrofit: {
-          title: "Upgrade Your Existing Home With Premium Automation",
-          subtext: "Discover how we can enhance your current home with invisible technology solutions."
-        }
-      };
-      
-      document.getElementById('project_type_input').value = type;
-      document.getElementById('dynamicHeadline').textContent = headlines[type].title;
-      document.getElementById('dynamicSubtext').textContent = headlines[type].subtext;
-      
-      // Show the form and dynamic header
-      document.querySelectorAll('.form-container').forEach(el => {
-        el.style.display = 'block';
-      });
-      
-      // Scroll to form
-      setTimeout(() => {
-        document.getElementById('consultationForm').scrollIntoView({ behavior: 'smooth' });
-      }, 300);
-    }
-
-    // Form submission with qualification check
+    // Form submission
     document.getElementById('consultationForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Get form values
-      const projectType = document.getElementById('project_type').value;
-      const budget = document.getElementById('budget').value;
-      const squareFootage = parseInt(document.getElementById('square_footage').value.replace(/\D/g,'')) || 0;
-      const ownsHome = document.getElementById('own_home').value === 'yes';
+      const selectedProjects = Array.from(document.querySelectorAll('input[name="project"]:checked')).length > 0;
       
-      // Qualification logic
-      const qualifies = (
-        ownsHome && 
-        (projectType !== '' && projectType !== 'other') && 
-        (budget === '25k-50k' || budget === 'over50k' || squareFootage > 2000)
-      );
-      
-      // Show appropriate thank you message
-      if(qualifies) {
-        document.getElementById('thankYouQualified').style.display = 'block';
-        document.getElementById('consultationForm').style.display = 'none';
-        
-        // Confetti effect for qualified submission
-        gsap.to(".thank-you", {
-          background: "rgba(40, 47, 56, 0.9)",
-          duration: 1,
-          ease: "power2.inOut"
-        });
-        
-        // Create floating blue particles
-        for (let i = 0; i < 50; i++) {
-          const particle = document.createElement('div');
-          particle.style.position = 'absolute';
-          particle.style.width = '8px';
-          particle.style.height = '8px';
-          particle.style.backgroundColor = 'var(--primary)';
-          particle.style.borderRadius = '50%';
-          particle.style.left = Math.random() * 100 + '%';
-          particle.style.top = Math.random() * 100 + '%';
-          particle.style.opacity = '0';
-          particle.style.boxShadow = '0 0 10px var(--primary)';
-          document.getElementById('thankYouQualified').appendChild(particle);
-          
-          gsap.to(particle, {
-            opacity: 1,
-            y: -100,
-            x: Math.random() * 100 - 50,
-            duration: 3,
-            delay: Math.random() * 0.5,
-            ease: "power1.out"
-          });
-        }
-      } else {
-        document.getElementById('thankYouRejected').style.display = 'block';
-        document.getElementById('consultationForm').style.display = 'none';
+      if (!selectedProjects) {
+        alert("Please select at least one system category to continue.");
+        return;
       }
       
-      // Scroll to thank you message
+      // Form submission handling
+      const formData = {
+        projects: Array.from(document.querySelectorAll('input[name="project"]:checked')).map(el => el.value),
+        timeline: document.getElementById('timeline').value,
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value
+      };
+      
+      console.log('Form submission:', formData);
+      
+      // Visual confirmation
+      const button = this.querySelector('button[type="submit"]');
+      button.innerHTML = '<i class="fas fa-check-circle"></i> Submission Received';
+      button.style.background = 'linear-gradient(145deg, rgba(0,160,0,0.9), rgba(0,120,0,0.9))';
+      
       setTimeout(() => {
-        (qualifies ? document.getElementById('thankYouQualified') : 
-                    document.getElementById('thankYouRejected'))
-          .scrollIntoView({ behavior: 'smooth' });
-      }, 300);
-    });
-
-    // Fallback form submission
-    function submitFallback() {
-      const email = document.getElementById('fallback-email').value;
-      if (email && email.includes('@')) {
-        // Animate success
-        gsap.to("#fallback-email", {
-          borderColor: "var(--primary)",
-          boxShadow: "0 0 15px var(--primary)",
-          duration: 0.3
-        });
-        
-        setTimeout(() => {
-          alert('Thank you! Your smart home guide will be emailed to you shortly.');
-          document.getElementById('fallback-email').value = '';
-        }, 500);
-      } else {
-        // Animate error
-        gsap.to("#fallback-email", {
-          borderColor: "#FF6B6B",
-          boxShadow: "0 0 15px #FF6B6B",
-          duration: 0.3,
-          yoyo: true,
-          repeat: 1
-        });
-        alert('Please enter a valid email address.');
-      }
-    }
-
-    // Scroll to form function
-    function scrollToForm() {
-      const form = document.getElementById('consultationForm');
-      const projectSelector = document.querySelector('.project-selector');
-      
-      if (form.style.display === 'block') {
-        form.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        projectSelector.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-
-    // Video play/pause on scroll
-    const video = document.querySelector('.hero-video video');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      });
-    }, { threshold: 0.5 });
-
-    if (video) {
-      observer.observe(video);
-    }
-
-    // Dynamic cursor effect
-    document.addEventListener('mousemove', (e) => {
-      const cursor = document.createElement('div');
-      cursor.style.position = 'fixed';
-      cursor.style.width = '6px';
-      cursor.style.height = '6px';
-      cursor.style.backgroundColor = 'var(--primary)';
-      cursor.style.borderRadius = '50%';
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-      cursor.style.pointerEvents = 'none';
-      cursor.style.zIndex = '9999';
-      cursor.style.boxShadow = '0 0 10px var(--primary)';
-      document.body.appendChild(cursor);
-      
-      // Remove cursor after animation
-      setTimeout(() => {
-        cursor.remove();
-      }, 500);
-    });
-
-    // Hover effects for interactive elements
-    document.querySelectorAll('button, .benefit-card, .portfolio-item').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        gsap.to(el, {
-          scale: 1.02,
-          duration: 0.3,
-          ease: "power1.out"
-        });
-      });
-      
-      el.addEventListener('mouseleave', () => {
-        gsap.to(el, {
-          scale: 1,
-          duration: 0.3,
-          ease: "power1.out"
-        });
-      });
+        this.reset();
+        button.innerHTML = '<i class="fas fa-headset"></i> Request Consultation';
+        button.style.background = 'linear-gradient(145deg, rgba(209,0,0,0.9), rgba(160,0,0,0.9))';
+      }, 3000);
     });
   </script>
 </body>
