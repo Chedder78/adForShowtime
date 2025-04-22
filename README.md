@@ -1,6 +1,6 @@
 # 🏡 Smart Home Consultation Form – High-End AV & Automation
 
-Welcome to the official repository for our **Smart Home Consultation Website**, designed to attract high-budget clients looking for premium home technology installations — including **custom theaters, home automation, whole-house audio, and integrated lighting/security**.
+Welcome to the official repository for our **Smart Home Consultation Website**, designed to attract high-budget clients looking for premium home technology installations — including **custom theaters, home automation, whole-house audio, and integrated lighting**.
 
 This site serves as both a lead capture and qualification tool, offering a dynamic, animated user experience with smooth scroll effects, form validation, and custom thank-you messages based on user criteria.
 
@@ -12,7 +12,7 @@ This site serves as both a lead capture and qualification tool, offering a dynam
 - 🎯 **User Qualification Logic** to identify ideal prospects
 - 📋 **Dynamic Form Sections** for system type, budget, home size, timeline, and personal info
 - 🔄 **Interactive "Thank You" Responses** based on eligibility
-- 🎆 **Visual Enhancements**: Parallax video, floating CTA, particle effects, hover animations
+- 🎆 **Visual Enhancements**: Parallax video, floating CTA, hover animations
 - 📧 **Fallback Offer** with email capture for users who don't qualify
 
 ---
