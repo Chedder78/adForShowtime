@@ -78,7 +78,6 @@
       left: 0;
     }
 
-    /* PLACEHOLDERS FOR YOUR IMAGES */
     .parallax__layer-img {
       position: absolute;
       width: 100%;
@@ -87,18 +86,6 @@
       left: 0;
       object-fit: cover;
       pointer-events: none;
-      background-color: #111; /* Fallback color */
-      border: 1px dashed #444; /* Visual placeholder indicator */
-    }
-
-    .parallax__layer-img::after {
-      content: "Your Image Here";
-      color: #666;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 1rem;
     }
 
     .parallax__layer-title {
@@ -186,20 +173,20 @@
   <!-- Speaker Grill Background -->
   <div class="grill-overlay"></div>
   
-  <!-- PARALLAX TITLE SECTION -->
+  <!-- PARALLAX TITLE SECTION WITH YOUR IMAGES -->
   <div class="parallax">
     <section class="parallax__header">
       <div class="parallax__visuals">
         <div class="parallax__black-line-overflow"></div>
         <div data-parallax-layers class="parallax__layers">
-          <!-- REPLACE THESE DIVS WITH YOUR IMAGE TAGS -->
-          <div class="20250122_094038 (5).png" data-parallax-layer="1"></div>
-          <div class="20250122_094038 (4).png" data-parallax-layer="2"></div>
-          <div data-parallax-layer="showtime name and logo" class="parallax__layer-title">
+          <!-- YOUR IMAGES INSERTED HERE -->
+          <img src="20250122_094038.png" loading="eager" data-parallax-layer="1" alt="" class="parallax__layer-img">
+          <img src="20250122_094038 (4).png" loading="eager" data-parallax-layer="2" alt="" class="parallax__layer-img">
+          <div data-parallax-layer="3" class="parallax__layer-title">
             <h2 class="parallax__title">It's Showtime</h2>
             <div class="parallax__subtitle">Premium Home Consultation</div>
           </div>
-          <div class="20250122_094038.png" data-parallax-layer="4"></div>
+          <img src="20250122_094038 (5).png" loading="eager" data-parallax-layer="4" alt="" class="parallax__layer-img">
         </div>
         <div class="parallax__fade"></div>
       </div>
