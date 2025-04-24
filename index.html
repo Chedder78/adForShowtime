@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>It's Showtime Consultation</title>
+  <title>It's Showtime | Premium Home Technology</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -16,16 +16,6 @@
       --carbon-fiber: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
       --glass-panel: rgba(20, 20, 20, 0.7);
       --neon-glow: 0 0 15px rgba(209, 0, 0, 0.5);
-    }
-
-    /* Inspired by Bowers & Wilkins & Bang & Olufsen aesthetics */
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: var(--carbon-fiber);
-      color: var(--brushed-nickel);
-      overflow-x: hidden;
-      line-height: 1.6;
     }
 
     /* Speaker Grill Background Effect */
@@ -139,9 +129,137 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       position: relative;
+      border-top: 1px solid rgba(224, 224, 224, 0.1);
     }
 
-    /* ... (rest of your existing CSS styles) ... */
+    /* Service Selection Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .service-option {
+      background: rgba(30, 30, 30, 0.7);
+      border: 1px solid var(--brushed-nickel);
+      padding: 25px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-option:hover {
+      border-color: var(--scarlet);
+      box-shadow: var(--neon-glow);
+      transform: translateY(-5px);
+    }
+
+    .service-option input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .service-option label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--brushed-nickel);
+    }
+
+    .service-option i {
+      margin-right: 15px;
+      color: var(--scarlet);
+      font-size: 1.8rem;
+      transition: all 0.3s ease;
+    }
+
+    .service-option:hover i {
+      color: var(--gold-accent);
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--brushed-nickel);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(30, 30, 30, 0.8);
+      border: 1px solid var(--brushed-nickel);
+      color: var(--brushed-nickel);
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--scarlet);
+      box-shadow: var(--neon-glow);
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button[type="submit"] {
+      background: linear-gradient(to bottom, var(--scarlet), #8B0000);
+      color: var(--brushed-nickel);
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    button[type="submit"]:hover {
+      background: linear-gradient(to bottom, #8B0000, #600000);
+      box-shadow: var(--neon-glow);
+    }
+
+    /* Homeowner Verification */
+    .homeowner-check {
+      background: rgba(30, 30, 30, 0.7);
+      padding: 30px;
+      border-radius: 8px;
+      margin: 40px 0;
+      border-left: 4px solid var(--scarlet);
+    }
+
+    /* Thank You Messages */
+    .thank-you {
+      background: rgba(30, 30, 30, 0.9);
+      padding: 40px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--scarlet);
+      box-shadow: var(--neon-glow);
+      display: none;
+    }
+
+    .thank-you h2 {
+      color: var(--scarlet);
+      margin-bottom: 20px;
+    }
 
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -155,6 +273,10 @@
       
       .container {
         padding: 2rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -173,20 +295,17 @@
   <!-- Speaker Grill Background -->
   <div class="grill-overlay"></div>
   
-  <!-- PARALLAX TITLE SECTION WITH YOUR IMAGES -->
+  <!-- PARALLAX TITLE SECTION -->
   <div class="parallax">
     <section class="parallax__header">
       <div class="parallax__visuals">
         <div class="parallax__black-line-overflow"></div>
         <div data-parallax-layers class="parallax__layers">
-          <!-- YOUR IMAGES INSERTED HERE -->
-          <img src="20250122_094038.png" loading="eager" data-parallax-layer="1" alt="" class="parallax__layer-img">
-          <img src="20250122_094038 (4).png" loading="eager" data-parallax-layer="2" alt="" class="parallax__layer-img">
+          <img src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" loading="eager" data-parallax-layer="1" alt="" class="parallax__layer-img">
           <div data-parallax-layer="3" class="parallax__layer-title">
             <h2 class="parallax__title">It's Showtime</h2>
-            <div class="parallax__subtitle">Premium Home Consultation</div>
+            <div class="parallax__subtitle">Premium Home Technology Solutions</div>
           </div>
-          <img src="20250122_094038 (5).png" loading="eager" data-parallax-layer="4" alt="" class="parallax__layer-img">
         </div>
         <div class="parallax__fade"></div>
       </div>
@@ -196,60 +315,147 @@
   <!-- MAIN CONTENT -->
   <div class="container">
     <section class="hero">
-      <h1>Experience Technology Made Simple</h1>
-      <p>We design home automation systems that are both powerful and easy to use</p>
+      <h1>Transform Your Home With Premium Technology</h1>
+      <p>Select the systems you're interested in and we'll design a custom solution for your space.</p>
     </section>
     
-    <div class="qualification-card">
-      <h2><i class="fas fa-medal"></i> Consultation Request</h2>
-      <p>Tell us about your project and we'll help design the perfect solution.</p>
-      
-      <form id="consultationForm">
-        <div class="form-group">
-          <label>Which systems interest you? (Select all applicable)</label>
-          <div class="checkbox-group">
-            <div class="checkbox-item">
-              <input type="checkbox" id="project-theater" name="project" value="home_theater">
-              <label for="project-theater">
-                <i class="fas fa-film"></i> Home Theater
-              </label>
-            </div>
-            <div class="checkbox-item">
-              <input type="checkbox" id="project-audio" name="project" value="whole_house_audio">
-              <label for="project-audio">
-                <i class="fas fa-volume-up"></i> Whole-House Audio
-              </label>
-            </div>
-            <!-- More checkbox items... -->
-          </div>
+    <!-- Services Selection -->
+    <div class="form-group">
+      <label>Which systems interest you? (Select all that apply)</label>
+      <div class="services-grid">
+        <div class="service-option">
+          <input type="checkbox" id="theater" name="services" value="home_theater">
+          <label for="theater">
+            <i class="fas fa-film"></i>
+            <span>Custom Home Theater</span>
+          </label>
         </div>
         
-        <!-- Form fields... -->
+        <div class="service-option">
+          <input type="checkbox" id="audio" name="services" value="whole_house_audio">
+          <label for="audio">
+            <i class="fas fa-volume-up"></i>
+            <span>Whole-House Audio</span>
+          </label>
+        </div>
         
-        <button type="submit" class="cta-button">
-          <i class="fas fa-headset"></i> Request Consultation
-        </button>
-      </form>
+        <div class="service-option">
+          <input type="checkbox" id="lighting" name="services" value="smart_lighting">
+          <label for="lighting">
+            <i class="fas fa-lightbulb"></i>
+            <span>Smart Lighting Control</span>
+          </label>
+        </div>
+        
+        <div class="service-option">
+          <input type="checkbox" id="cameras" name="services" value="ip_cameras">
+          <label for="cameras">
+            <i class="fas fa-video"></i>
+            <span>IP Camera System</span>
+          </label>
+        </div>
+        
+        <div class="service-option">
+          <input type="checkbox" id="automation" name="services" value="home_automation">
+          <label for="automation">
+            <i class="fas fa-robot"></i>
+            <span>Home Automation</span>
+          </label>
+        </div>
+        
+        <div class="service-option">
+          <input type="checkbox" id="other" name="services" value="other">
+          <label for="other">
+            <i class="fas fa-plus"></i>
+            <span>Other Technology</span>
+          </label>
+        </div>
+      </div>
     </div>
     
-    <!-- Brands Section -->
-    <section class="brands-section">
-      <h2 class="brands-title">Premium Brands We Work With</h2>
-      <div class="brands-grid">
-        <!-- Brand logos... -->
+    <!-- Homeowner Verification -->
+    <div class="homeowner-check">
+      <div class="form-group">
+        <label>Do you own the home where installation will occur?</label>
+        <select id="home_ownership" required>
+          <option value="">Select one</option>
+          <option value="yes">Yes, I own the home</option>
+          <option value="no">No, I'm renting or don't own yet</option>
+        </select>
       </div>
-    </section>
+    </div>
     
-    <section class="benefits-grid">
-      <!-- Benefit cards... -->
-    </section>
+    <!-- Homeowner Form (hidden initially) -->
+    <form id="homeownerForm" style="display: none;">
+      <div class="form-group">
+        <label>Home square footage</label>
+        <input type="text" name="square_footage" placeholder="Approximate square footage">
+      </div>
+      
+      <div class="form-group">
+        <label>Project timeline</label>
+        <select name="timeline">
+          <option value="">When would you like to begin?</option>
+          <option value="immediately">Immediately</option>
+          <option value="1-3_months">1-3 months</option>
+          <option value="3-6_months">3-6 months</option>
+          <option value="planning">Still planning</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Budget range</label>
+        <select name="budget">
+          <option value="">What's your estimated budget?</option>
+          <option value="under_10k">Under $10,000</option>
+          <option value="10k-25k">$10,000 - $25,000</option>
+          <option value="25k-50k">$25,000 - $50,000</option>
+          <option value="over_50k">Over $50,000</option>
+          <option value="unsure">Not sure yet</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Your name</label>
+        <input type="text" name="name" required placeholder="First and last name">
+      </div>
+      
+      <div class="form-group">
+        <label>Email address</label>
+        <input type="email" name="email" required placeholder="Your email">
+      </div>
+      
+      <div class="form-group">
+        <label>Phone number</label>
+        <input type="tel" name="phone" placeholder="(xxx) xxx-xxxx">
+      </div>
+      
+      <div class="form-group">
+        <label>Tell us about your project (optional)</label>
+        <textarea name="message" placeholder="Any specific requirements or details about your project"></textarea>
+      </div>
+      
+      <button type="submit">Request Consultation</button>
+    </form>
     
-    <section class="testimonial">
-      <!-- Testimonial content... -->
-    </section>
+    <!-- Renter Message (hidden initially) -->
+    <div id="renterMessage" class="thank-you" style="display: none;">
+      <h2>Thank You for Your Interest</h2>
+      <p>Our premium installation services are currently only available for homeowners. Since you indicated you're renting, we recommend these renter-friendly solutions:</p>
+      <ul style="text-align: left; max-width: 500px; margin: 20px auto;">
+        <li>Portable sound systems</li>
+        <li>Temporary TV mounting solutions</li>
+        <li>Wireless smart home devices</li>
+      </ul>
+    </div>
+    
+    <!-- Thank You Message (hidden initially) -->
+    <div id="thankYouMessage" class="thank-you" style="display: none;">
+      <h2>Thank You for Your Request!</h2>
+      <p>We've received your information and will contact you within 24 hours to schedule your complimentary consultation.</p>
+    </div>
   </div>
 
-  <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
@@ -271,9 +477,7 @@
         
         const layers = [
           { layer: "1", yPercent: 70 },
-          { layer: "2", yPercent: 55 },
-          { layer: "3", yPercent: 40 },
-          { layer: "4", yPercent: 10 }
+          { layer: "3", yPercent: 40 }
         ];
         
         layers.forEach((layerObj, idx) => {
@@ -295,11 +499,56 @@
       gsap.ticker.lagSmoothing(0);
     });
 
+    // Homeowner verification
+    document.getElementById('home_ownership').addEventListener('change', function() {
+      if (this.value === 'yes') {
+        document.getElementById('homeownerForm').style.display = 'block';
+        document.getElementById('renterMessage').style.display = 'none';
+      } else if (this.value === 'no') {
+        document.getElementById('homeownerForm').style.display = 'none';
+        document.getElementById('renterMessage').style.display = 'block';
+      } else {
+        document.getElementById('homeownerForm').style.display = 'none';
+        document.getElementById('renterMessage').style.display = 'none';
+      }
+    });
+
     // Form submission
-    document.getElementById('consultationForm').addEventListener('submit', function(e) {
+    document.getElementById('homeownerForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Form handling logic...
+      // Hide form and show thank you message
+      document.getElementById('homeownerForm').style.display = 'none';
+      document.getElementById('thankYouMessage').style.display = 'block';
+      
+      // Scroll to thank you message
+      setTimeout(() => {
+        document.getElementById('thankYouMessage').scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+      
+      // Here you would normally send the form data to your server
+      const formData = new FormData(this);
+      const selectedServices = Array.from(document.querySelectorAll('input[name="services"]:checked')).map(el => el.value);
+      formData.append('services', JSON.stringify(selectedServices));
+      
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+      console.log('Form data:', data);
+    });
+
+    // Service option hover effects
+    document.querySelectorAll('.service-option').forEach(option => {
+      option.addEventListener('mouseenter', () => {
+        option.style.transform = 'translateY(-5px)';
+        option.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)';
+      });
+      
+      option.addEventListener('mouseleave', () => {
+        option.style.transform = '';
+        option.style.boxShadow = '';
+      });
     });
   </script>
 </body>
